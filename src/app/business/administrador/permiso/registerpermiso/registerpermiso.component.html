@@ -1,1 +1,42 @@
-<p>registerpermiso works!</p>
+<div class="card shadow-sm">
+  <div class="card-body">
+    <!-- TÍTULO -->
+    <h5 class="mb-3 text-primary font-weight-bold">
+      <i class="fas fa-plus-circle mr-2"></i> Registrar Permiso
+    </h5>
+
+    <!-- FORMULARIO -->
+    <form #formPermiso="ngForm" (ngSubmit)="crearPermiso()">
+      <div class="form-group">
+        <label for="nombre">Nombre del Permiso</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          class="form-control"
+          [(ngModel)]="permiso.nombre"
+          placeholder="Ej. Editar Usuarios"
+          required
+        />
+      </div>
+
+      <!-- BOTONES -->
+      <div class="form-group d-flex justify-content-end mt-4">
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm mr-2"
+          (click)="cerrarModal()"
+        >
+          Cancelar
+        </button>
+        <button
+          type="submit"
+          class="btn btn-primary btn-sm"
+          [disabled]="!formPermiso.form.valid"
+        >
+          <i class="fas fa-save mr-1"></i> Guardar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

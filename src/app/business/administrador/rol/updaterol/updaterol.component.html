@@ -1,1 +1,44 @@
-<p>updaterol works!</p>
+<div class="card shadow-sm">
+  <div class="card-body">
+    <h5 class="mb-3">Editar Rol</h5>
+
+    <form (ngSubmit)="actualizarRol()" #rolForm="ngForm">
+      <div class="form-group">
+        <label for="nombre">Nombre del Rol</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          class="form-control"
+          [(ngModel)]="rol.nombre"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Permisos</label>
+        <div *ngFor="let permiso of permisos" class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            [value]="permiso.id"
+            [(ngModel)]="permiso.seleccionado"
+            name="permiso_{{ permiso.id }}"
+          />
+          <label class="form-check-label">{{ permiso.nombre }}</label>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-warning btn-sm mt-2">
+        <i class="fas fa-save mr-1"></i> Actualizar
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary btn-sm mt-2 ml-2"
+        (click)="cerrarModal()"
+      >
+        Cancelar
+      </button>
+    </form>
+  </div>
+</div>

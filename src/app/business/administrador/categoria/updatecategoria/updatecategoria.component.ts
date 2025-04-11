@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-updatecategoria',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './updatecategoria.component.html',
-  styleUrl: './updatecategoria.component.css'
+  styleUrl: './updatecategoria.component.css',
 })
-export class UpdatecategoriaComponent {
-
-}
+export class UpdatecategoriaComponent {}

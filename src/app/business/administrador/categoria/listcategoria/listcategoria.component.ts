@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-listcategoria',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './listcategoria.component.html',
-  styleUrl: './listcategoria.component.css'
+  styleUrl: './listcategoria.component.css',
 })
-export class ListcategoriaComponent {
-
-}
+export class ListcategoriaComponent {}

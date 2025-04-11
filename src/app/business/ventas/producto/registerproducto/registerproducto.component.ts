@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-registerproducto',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './registerproducto.component.html',
-  styleUrl: './registerproducto.component.css'
+  styleUrl: './registerproducto.component.css',
 })
-export class RegisterproductoComponent {
-
-}
+export class RegisterproductoComponent {}

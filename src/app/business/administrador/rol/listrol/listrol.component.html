@@ -1,1 +1,52 @@
-<p>listrol works!</p>
+<div class="card shadow-sm">
+  <div class="card-body">
+    <div
+      class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3"
+    >
+      <h5 class="mb-2 mb-md-0">Roles y Permisos</h5>
+      <button routerLink="/rol/create" class="btn btn-primary btn-sm">
+        <i class="fas fa-plus mr-1"></i> Crear Rol
+      </button>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover table-sm">
+        <thead class="thead-light">
+          <tr>
+            <th>ID</th>
+            <th>Rol</th>
+            <th>Permisos</th>
+            <th class="text-center">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let rol of roles">
+            <td>{{ rol.id }}</td>
+            <td>{{ rol.nombre }}</td>
+            <td>
+              <ul class="mb-0 pl-3">
+                <li *ngFor="let permiso of rol.permisos">
+                  {{ permiso.nombre }}
+                </li>
+              </ul>
+            </td>
+            <td class="text-center">
+              <button
+                class="btn btn-warning btn-sm mr-2"
+                (click)="editarRol(rol)"
+              >
+                <i class="fas fa-edit"></i>
+              </button>
+              <button
+                class="btn btn-danger btn-sm"
+                (click)="eliminarRol(rol.id)"
+              >
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
