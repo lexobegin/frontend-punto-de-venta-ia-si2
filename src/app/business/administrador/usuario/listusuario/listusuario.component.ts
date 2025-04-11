@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-listusuario',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './listusuario.component.html',
-  styleUrl: './listusuario.component.css'
+  styleUrl: './listusuario.component.css',
 })
-export class ListusuarioComponent {
-
-}
+export class ListusuarioComponent {}

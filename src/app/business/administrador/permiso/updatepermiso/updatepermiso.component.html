@@ -1,1 +1,41 @@
-<p>updatepermiso works!</p>
+<div class="card shadow-sm">
+  <div class="card-body">
+    <!-- TÍTULO -->
+    <h5 class="mb-3 text-warning font-weight-bold">
+      <i class="fas fa-edit mr-2"></i> Editar Permiso
+    </h5>
+
+    <!-- FORMULARIO -->
+    <form #formEditarPermiso="ngForm" (ngSubmit)="actualizarPermiso()">
+      <div class="form-group">
+        <label for="nombre">Nombre del Permiso</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          class="form-control"
+          [(ngModel)]="permiso.nombre"
+          required
+        />
+      </div>
+
+      <!-- BOTONES -->
+      <div class="form-group d-flex justify-content-end mt-4">
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm mr-2"
+          (click)="cerrarModal()"
+        >
+          Cancelar
+        </button>
+        <button
+          type="submit"
+          class="btn btn-warning btn-sm"
+          [disabled]="!formEditarPermiso.form.valid"
+        >
+          <i class="fas fa-sync-alt mr-1"></i> Actualizar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
