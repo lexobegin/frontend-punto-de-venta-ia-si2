@@ -7,10 +7,12 @@ import { Observable, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  private BASE_URL = 'http://127.0.0.1:8080';
+  //private BASE_URL = 'http://127.0.0.1:8080';
+  private BASE_URL = 'http://127.0.0.1:8000';
   private tokenKey = 'authToken';
 
-  private REFRESH_URL = "http://127.0.0.1:8080/auth/refresh'";
+  //private REFRESH_URL = 'http://127.0.0.1:8080/auth/refresh';
+  private REFRESH_URL = 'http://127.0.0.1:8000/api/auth/jwt/refresh/';
   private refreshTokenKey = 'refreshToken';
 
   private rol = 'role';
@@ -18,34 +20,19 @@ export class AuthService {
   constructor(private httpClient: HttpClient, private router: Router) {}
 
   login(email: string, password: string): Observable<any> {
-    const url = `${this.BASE_URL}/auth/signin`;
+    const url = `${this.BASE_URL}/api/auth/jwt/create/`;
     return this.httpClient.post<any>(url, { email, password }).pipe(
       tap((response) => {
-        if (response.token) {
-          console.log('LOGIN', response);
-          console.log('ROLE', response.role);
-          console.log(response.token);
+        if (response.access) {
+          console.log('RESPONSE', response);
 
-          // Aquí almacenamos el objeto userAuth
-          const userAuth = {
-            userId: response.userId,
-            nombre: response.nombre,
-            // otros campos que desees almacenar
-          };
+          this.setToken(response.access);
 
-          this.setUserAuth(userAuth); // Guardamos el objeto en localStorage
-
-          this.setToken(response.token);
-          this.setRole(response.role);
-          this.setRefreshToken(response.refreshToken);
+          this.setRefreshToken(response.refresh);
           this.autoRefreshToken();
         }
       })
     );
-  }
-
-  private setUserAuth(userAuth: any): void {
-    localStorage.setItem('userAuth', JSON.stringify(userAuth));
   }
 
   private setToken(token: string): void {
@@ -58,10 +45,6 @@ export class AuthService {
     } else {
       return null;
     }
-  }
-
-  private setRole(role: string): void {
-    localStorage.setItem(this.rol, role);
   }
 
   private setRefreshToken(token: string): void {
@@ -108,8 +91,6 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem(this.tokenKey);
     localStorage.removeItem(this.refreshTokenKey);
-    localStorage.removeItem(this.rol);
-    localStorage.removeItem('userAuth');
     this.router.navigate(['/login']);
   }
 

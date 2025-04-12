@@ -16,6 +16,9 @@ export class ListpermisoComponent {
     { id: 1, nombre: 'Ver Productos' },
     { id: 2, nombre: 'Editar Usuarios' },
     { id: 3, nombre: 'Gestionar Ventas' },
+    { id: 4, nombre: 'Ver Productos' },
+    { id: 5, nombre: 'Editar Usuarios' },
+    { id: 6, nombre: 'Gestionar Ventas' },
   ];
 
   constructor(private readonly router: Router) {}

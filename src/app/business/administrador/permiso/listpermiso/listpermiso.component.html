@@ -11,36 +11,38 @@
     </div>
 
     <!-- TABLA DE PERMISOS -->
-    <div class="table-responsive">
-      <table class="table table-bordered table-hover table-sm">
-        <thead class="thead-light">
-          <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th class="text-center">Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let permiso of permisos">
-            <td>{{ permiso.id }}</td>
-            <td>{{ permiso.nombre }}</td>
-            <td class="text-center">
-              <button
-                class="btn btn-warning btn-sm mr-2"
-                (click)="editarPermiso(permiso)"
-              >
-                <i class="fas fa-edit"></i>
-              </button>
-              <button
-                class="btn btn-danger btn-sm"
-                (click)="eliminarPermiso(permiso.id)"
-              >
-                <i class="fas fa-trash-alt"></i>
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div style="max-height: 400px; overflow-y: auto">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover table-sm">
+          <thead class="thead-light">
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th class="text-center">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let permiso of permisos">
+              <td>{{ permiso.id }}</td>
+              <td>{{ permiso.nombre }}</td>
+              <td class="text-center">
+                <button
+                  class="btn btn-warning btn-sm mr-2"
+                  (click)="editarPermiso(permiso)"
+                >
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button
+                  class="btn btn-danger btn-sm"
+                  (click)="eliminarPermiso(permiso.id)"
+                >
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

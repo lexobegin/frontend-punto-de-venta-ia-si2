@@ -55,15 +55,15 @@ export class LoginComponent {
       .login(this.loginForm.value.email, this.loginForm.value.password)
       .subscribe({
         next: (response) => {
-          console.log('LOGIN: ', response);
-
-          if (response.statusCode === 200) {
+          console.log('FROM-LOGIN: ', response);
+          this.router.navigate(['/dashboard']);
+          /*if (response.statusCode === 200) {
             this.router.navigate(['/dashboard']);
           }
 
           if (response.statusCode === 500) {
             console.log('ERROR:500:Error de login. Verifica tus credenciales.');
-          }
+          }*/
         },
         error: (err) => {
           console.error('Login failed', err);
